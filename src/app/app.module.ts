@@ -8,12 +8,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {LoggedinModule} from './loggedin/loggedin.module';
 import {LoggedoutModule} from './loggedout/loggedout.module';
 import {WebsocketsModule} from './websockets/websockets.module';
-import {WebsocketsConnectorService} from './websockets/websockets-connector.service';
+import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
+import {TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {MzCardModule} from 'ngx-materialize';
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
 
 @NgModule({
   declarations: [
-    AppComponent,
-    LoginComponent
+    AppComponent
   ],
   imports: [
     WebsocketsModule.forRoot(),
@@ -21,12 +29,19 @@ import {WebsocketsConnectorService} from './websockets/websockets-connector.serv
     AppRoutingModule,
     BrowserAnimationsModule,
     LoggedinModule,
-    LoggedoutModule
+    LoggedoutModule,
+    SnotifyModule,
+    HttpClientModule,
+    MzCardModule
   ],
   exports: [
     BrowserAnimationsModule
   ],
-  providers: [WebsocketsConnectorService],
+  providers: [
+    { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
+    SnotifyService,
+    TranslateService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

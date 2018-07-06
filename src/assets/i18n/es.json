@@ -1,0 +1,11 @@
+{
+  "notifications": {
+    "ws": {
+      "con_err": {
+        "title": "Error WS",
+        "desc": "No se ha podido conectar con el servidor en tiempo real."
+      }
+    }
+  },
+  "loginForm": "TEST"
+}
