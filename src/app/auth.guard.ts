@@ -14,8 +14,8 @@ export class AuthGuard implements CanActivate {
 
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    this.ws.subscribe('scm/login');
-    this.ws.send('scm/login', "STATUS");
+    this.ws.subscribe('scm/auth');
+    this.ws.send('scm/auth', {query: 'status'});
     return true;
   }
 }

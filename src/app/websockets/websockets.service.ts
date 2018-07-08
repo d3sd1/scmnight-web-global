@@ -1,7 +1,7 @@
 import {Injectable, Optional} from '@angular/core';
 import {SnotifyService, SnotifyToast} from 'ng-snotify';
 import {environment} from '../../environments/environment';
-import {Channel} from '../model/channel';
+import {Channel} from './channel';
 import {TranslateService} from '@ngx-translate/core';
 
 @Injectable({
@@ -59,7 +59,6 @@ export class WebsocketsService {
             tmpWs.onerror = (ev: Event) => {
               if (null === this.wsReconnecting) {
                 this.translate.get('notifications.ws.con_err').subscribe((not: string[]) => {
-                  console.log(this.notClose);
                   this.notify.remove(this.notReco);
                   this.notify.remove(this.notClose);
                   this.notError = this.notify.error(not['desc'], not['title'], {
@@ -128,6 +127,7 @@ export class WebsocketsService {
 
   public subscribe(channelName: string) {
     this.getStickyConnection(() => {
+      this.ws.send(new Channel(channelName, {_action: 'subscribe'}));
       this.ws.onmessage = (ev: Event) => {
         const unserializedData = JSON.parse(ev['data']);
         const channel = new Channel();
