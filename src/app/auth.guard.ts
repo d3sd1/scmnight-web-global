@@ -9,17 +9,13 @@ import {SnotifyService} from 'ng-snotify';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  constructor(private ws: WebsocketsService, private notify: SnotifyService) {
-
-//TODO: que estofuncione
-  }
+  constructor(private ws: WebsocketsService, private notify: SnotifyService) {}
   canActivate(
 
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-
-    this.ws.subscribe('scm/channel');
-    this.ws.send('scm/channel', new User('test', 'pass'));
+    this.ws.subscribe('scm/login');
+    this.ws.send('scm/login', "STATUS");
     return true;
   }
 }

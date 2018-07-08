@@ -1,3 +1,10 @@
 .login-logo-image {
   width: 100%
 }
+.login-btn {
+  margin-left: 1em
+}
+
+.prefix.active {
+  color: #1E88E5
+}

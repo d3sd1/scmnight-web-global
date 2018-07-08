@@ -12,7 +12,8 @@ import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import {TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {MzCardModule} from 'ngx-materialize';
+import { MzIconMdiModule } from 'ngx-materialize'
+import {FormsModule} from '@angular/forms';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -32,7 +33,7 @@ export function createTranslateLoader(http: HttpClient) {
     LoggedoutModule,
     SnotifyModule,
     HttpClientModule,
-    MzCardModule
+    FormsModule
   ],
   exports: [
     BrowserAnimationsModule

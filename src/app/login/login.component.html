@@ -1,19 +1,44 @@
 <div class="row">
   <div class="col s12 m6 l4 offset-m3 offset-l4">
     <img class="login-logo-image" src="assets/img/logo.jpg" draggable="false" />
-    <mz-card [hoverable]="true" class="blue-grey darken-1 white-text center-align">
+    <mz-card [hoverable]="true" class="grey lighten-3 center-align">
       <mz-card-title>
-        {{ 'loginForm' | translate }}
+        {{ 'loginForm.title' | translate }}
       </mz-card-title>
 
       <mz-card-content>
-        I am a very simple card. I am good at containing small bits of information. I am convenient because I require
-        little markup to use effectively.
+        <mz-input-container>
+          <i mz-icon-mdi mz-input-prefix
+             [icon]="'email'">
+          </i>
+          <input mz-input
+                 [disabled]="login.processing"
+                 [(ngModel)]="login.user"
+                 [label]="'loginForm.user.label' | translate"
+                 [validate]="true"
+                 [placeholder]="'loginForm.user.placeholder' | translate"
+                 length="150"
+                 type="text">
+        </mz-input-container>
+        <mz-input-container>
+          <i mz-icon-mdi mz-input-prefix
+             [icon]="'lock'">
+          </i>
+          <input mz-input
+                 [disabled]="login.processing"
+                 [(ngModel)]="login.password"
+                 [label]="'loginForm.pass.label' | translate"
+                 [validate]="true"
+                 [placeholder]="'loginForm.pass.placeholder' | translate"
+                 type="password">
+        </mz-input-container>
       </mz-card-content>
 
       <mz-card-action>
-        <a href="javascript:void(0)">This is a link</a>
-        <a href="javascript:void(0)">This is a link</a>
+        <button mz-button class="blue darken-1" (click)="submitLogin()" [disabled]="login.processing">
+          <mz-spinner *ngIf="login.processing" [color]="'blue'" [size]="'small'"></mz-spinner>
+          <span *ngIf="!login.processing">{{ 'loginForm.submit' | translate }}</span>
+        </button>
       </mz-card-action>
     </mz-card>
   </div>

@@ -4,8 +4,27 @@
       "con_err": {
         "title": "Error WS",
         "desc": "No se ha podido conectar con el servidor en tiempo real."
+      },
+      "con_discon": {
+        "title": "Desconectado WS",
+        "desc": "El servidor en tiempo real se ha desconectado."
+      },
+      "recon": {
+        "title": "Servidor WS reconectado",
+        "desc": "El servidor en tiempo real se ha reconectado."
       }
     }
   },
-  "loginForm": "TEST"
+  "loginForm": {
+    "title": "Conexión",
+    "submit": "Conectar",
+    "user": {
+      "label": "Administrador",
+      "placeholder": "Nombre de administrador"
+    },
+    "pass": {
+      "label": "Contraseña",
+      "placeholder": "••••••••"
+    }
+  }
 }

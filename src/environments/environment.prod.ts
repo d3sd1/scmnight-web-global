@@ -1,4 +1,6 @@
 export const environment = {
   production: true,
-  wsServer: 'ws://localhost'
+  wsServer: 'ws://localhost',
+  wsReconnectInterval: 2000,
+  debug: false
 };
